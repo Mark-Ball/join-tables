@@ -12,7 +12,9 @@ We will have 3 tables:
 By convention the join table is named with the component tables in alphabetical order, with the first table plural and the second singular, separated by an underscore.
 
 >rails g model Listing name:string price:integer
+>
 >rails g model Color color:string
+>
 >rails g model ColorsListing listing:references color:references
 
 ## 2. Write in the associations
@@ -21,10 +23,12 @@ The association for the join table are already written into colors_listing.rb be
 
 In color.rb:
 >has_many :colors_listings
+>
 >has_many :listings, through: :colors_listings
 
 In listing.rb
 >has_many :colors_listings
+>
 >has_many :listings, through: :colors_listings
 
 Note the plurals on colors_listings when after a has_many.
@@ -38,10 +42,15 @@ Check DBeaver to see if the record was created.
 
 Create the colors
 >Color.create(color: "Red")
+>
 >Color.create(color: "White")
+>
 >Color.create(color: "Green")
+>
 >Color.create(color: "Black")
+>
 >Color.create(color: "Blue")
+>
 >Color.create(color: "Colorless")
 
 CHeck DBeaver to see if the records were created.
